@@ -98,7 +98,7 @@ module ActiveLinkTo
         (controllers.blank? || controllers.member?(params[:controller])) &&
         (actions.blank? || actions.member?(params[:action])) ||
         controllers.any? do |controller, action|
-          params[:controller] == controller.to_s && params[:action] == action.to_s
+          params[:controller] == controller.to_s && (params[:action] == action.to_s || action.blank?)
         end
       when TrueClass
         true
